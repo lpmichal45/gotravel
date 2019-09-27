@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  title: GoTravel API
+  description: An API used to perform gotravel's backend operations
+  version: 0.0.1
+paths:
+  /api/v1/health:
+    get:
+      summary: Gets the health of the server
+      operationId: controller.health_check
+      responses:
+        '200':
+          description: Ok
