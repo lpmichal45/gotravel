@@ -4,10 +4,85 @@ info:
   description: An API used to perform gotravel's backend operations
   version: 0.0.1
 paths:
-  /api/v1/health:
+  /api/flights/v1/health:
     get:
       summary: Gets the health of the server
       operationId: controller.health_check
       responses:
         '200':
           description: Ok
+
+  /api/flights/v1/search:
+    get:
+      summary: Searches for flights that match the search criteria
+      operationId: controller.check_flights
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: No flights found
+      parameters:
+        - in: query
+          name: outdate
+          schema:
+            type: string
+          example: 2019-09-01
+
+        - in: query
+          name: indate
+          schema:
+            type: string
+          example: 2019-09-8
+
+        - in: query
+          name: cabin
+          schema:
+            type: string
+          example: business
+
+        - in: query
+          name: adults
+          schema:
+            type: integer
+
+        - in: query
+          name: children
+          schema:
+            type: integer
+          example: 0
+
+        - in: query
+          name: infants
+          schema:
+            type: integer
+          example: 1
+
+        - in: query
+          name: country
+          schema:
+            type: string
+          example: US
+
+        - in: query
+          name: currency
+          schema:
+            type: string
+          example: USD
+
+        - in: query
+          name: locale
+          schema:
+            type: string
+          example: en-US
+
+        - in: query
+          name: originplace
+          schema:
+            type: string
+          example: SFO-sky
+
+        - in: query
+          name: destinationplace
+          schema:
+            type: string
+          example: LHR-sky
