@@ -10,7 +10,18 @@ paths:
       operationId: controller.health_check
       responses:
         '200':
-          description: Ok
+          description: Service is up and running
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statuscode:
+                    type: int
+                    description: The HTTP status code associated with the result of the api call
+                  message:
+                    type: string
+                    description: Message to be returned back with user
 
   /api/flights/v1/search:
     get:

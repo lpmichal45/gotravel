@@ -12,7 +12,7 @@ HEADERS = {
 
 
 def create_session(start_date, end_date, cabin_class, adults, children, infants,
-                country, currency, locale, origin_place, destination_place):
+                   country, currency, locale, origin_place, destination_place):
     '''
         Calls Skyscanner and searches for flights for specified location and
         specified dates

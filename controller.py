@@ -8,12 +8,14 @@
 
 '''
 
+import connexion
 import lib.interfaces.skyscanner as scan
 
 HTTP_OK = 200
 HTTP_BAD_REQUEST = 400
 HTTP_UNAUTHORIZED = 403
 HTTP_CONFLICT = 409
+
 
 def do_authorization():
     '''
@@ -36,12 +38,27 @@ def book_flights(outdate, indate, cabin, adults, children, infants, country,
     '''
         Books a flight for the destination
     '''
-    message = 'success'
+    data = {
+        'message': None,
+        'status': None
+    }
     return HTTP_OK
 
 def health_check():
     '''
         Validates that the service is up and running
     '''
-    message = 'success'
-    return HTTP_OK, message
+    data = {
+        'message': 'Service is up and running, all systems go',
+        'status': HTTP_OK
+    }
+
+    return data
+
+def main():
+    APP = connexion.App('gotravel')
+    APP.add_api('api.yml')
+    APP.run(port=8080)
+
+if __name__ == '__main__':
+    main()
